@@ -26,27 +26,31 @@ try:
         if check_device_exists(device):
             # Get device info
             if listapp:
-                print("[x] User Installed Application on %s" % device)
+                print(f"[x] User Installed Application on {device}")
+
                 for application in get_user_installed_applications(device):
-                    print(" - %s" % application)
+                    print(f" - {application}")
 
             # Get all permission on all user installed applications
             else:
                 if not permcheck:
                     for application in get_user_installed_applications(device):
-                        print("\n[x] '%s' has the following permission" % application)
+                        print(f"\n[x] '{device}' has the following permission")
+
                         for permission in get_application_permission(device, application):
-                            print(" - %s" % permission.split(":")[0])
+                            permission = permission.split(":")[0]
+                            print(f" - {permission}")
 
                 else:
                     for application in get_user_installed_applications(device):
                         permissions = get_application_permission(device, application)
 
                         if permcheck in permissions:
-                            print("\n[x] '%s' has the following permission" % application)
+                            print(f"\n[x] '{device}' has the following permission")
 
                             for permission in permissions:
-                                print(" - %s" % permission.split(":")[0])
+                                permission = permission.split(":")[0]
+                                print(f" - {permission}")
 
         else:
             print("[x] Device does not exists - Leaving")

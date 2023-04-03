@@ -18,7 +18,7 @@ def display_connected_device():
     adb = get_connected_devices()
 
     for device in adb.list():
-        print(" - %s" % device.serial)
+        print(f" - {device.serial}")
 
 
 def check_device_exists(device):
@@ -43,7 +43,7 @@ def show_device_info(device):
     adb = get_connected_devices()
     d = adb.device(serial=device)
 
-    print("[x] Getting information on %s - %s (%s)" % (device, d.prop.device, d.prop.model))
+    print(f"[x] Getting information on {device} - {d.prop.device} ({d.prop.model})")
 
 
 def get_user_installed_applications(device):
