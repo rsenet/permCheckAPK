@@ -46,7 +46,7 @@ try:
                         permissions = get_application_permission(device, application)
 
                         if permcheck in permissions:
-                            print(f"\n[x] '{device}' has the following permission")
+                            print(f"\n[x] '{application}' has the following permission")
 
                             for permission in permissions:
                                 permission = permission.split(":")[0]
