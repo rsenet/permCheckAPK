@@ -16,6 +16,7 @@ optional arguments:
   -h, --help       show this help message and exit
   --device DEVICE  Specify the device
   --list           List all user installed applications
+  --bundle         List all permissions for a specific application using bundle id
   --perm PERM      Return applications with the specified permission
 ```
 

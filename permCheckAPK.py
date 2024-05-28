@@ -11,7 +11,7 @@ short_desc  = "Android Application Permission Checker"
 arg_parser = argparse.ArgumentParser(description=short_desc)
 arg_parser.add_argument('--device', help="Specify the device")
 arg_parser.add_argument('--list', action='store_true', help="List all user installed applications")
-arg_parser.add_argument('--bundle', help="List all user installed applications")
+arg_parser.add_argument('--bundle', help="List all permissions for a specific application using bundle id")
 arg_parser.add_argument('--perm', help="Return applications with the specified permission")
 u_args = arg_parser.parse_args()
 device = u_args.device
