@@ -11,10 +11,12 @@ short_desc  = "Android Application Permission Checker"
 arg_parser = argparse.ArgumentParser(description=short_desc)
 arg_parser.add_argument('--device', help="Specify the device")
 arg_parser.add_argument('--list', action='store_true', help="List all user installed applications")
+arg_parser.add_argument('--bundle', help="List all user installed applications")
 arg_parser.add_argument('--perm', help="Return applications with the specified permission")
 u_args = arg_parser.parse_args()
 device = u_args.device
 listapp = u_args.list
+bundle = u_args.bundle
 permcheck = u_args.perm
 
 try:
@@ -34,12 +36,18 @@ try:
             # Get all permission on all user installed applications
             else:
                 if not permcheck:
-                    for application in get_user_installed_applications(device):
-                        print(f"\n[x] '{device}' has the following permission")
-
-                        for permission in get_application_permission(device, application):
+                    if bundle:
+                        for permission in get_application_permission(device, bundle):
                             permission = permission.split(":")[0]
                             print(f" - {permission}")
+
+                    else:
+                        for application in get_user_installed_applications(device):
+                            print(f"\n[x] '{application}' has the following permission")
+
+                            for permission in get_application_permission(device, application):
+                                permission = permission.split(":")[0]
+                                print(f" - {permission}")
 
                 else:
                     for application in get_user_installed_applications(device):
